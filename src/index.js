@@ -21,9 +21,11 @@ function onInputChange(e) {
     fetchCountries(searchValue).then(countries => {
         countriesList.innerHTML = '';
         countryInfo.innerHTML = '';
-        checkFeedback(countries)
-    }).catch(error => {
+        checkServerReply(countries);
+    }).catch(() => {
         Notiflix.Notify.failure("Oops, there is no country with that name");
+        countriesList.innerHTML = '';
+        countryInfo.innerHTML = '';
     });
 
 }
@@ -31,9 +33,9 @@ function onInputChange(e) {
 function renderCountriesList(countries) {
     return countries.map(({name, flags}) => {
         return `<li class='country-list__item'>
-         <img src="${flags.svg}" alt="${name.official}" width = 40px height = 30px>
-         <h1 class="country-list__name">${name.official}</h1></li>`
-    }).join('');
+         <img src="${flags.svg}" alt="${name.official}" width = 50px height = 30px>
+         <h2 class="country-list__name">${name.official}</h2></li>`
+    }).join('')
 }
 
 function renderCountryInfo(countries) {
@@ -44,7 +46,7 @@ function renderCountryInfo(countries) {
     }).join('')
 }
 
-function checkFeedback(countries) {
+function checkServerReply(countries) {
     if(countries.length === 1) {
         countriesList.insertAdjacentHTML('beforeend', renderCountriesList(counrties));
         countryInfo.insertAdjacentHTML('beforeend', renderCountryInfo(counrties));
@@ -54,6 +56,3 @@ function checkFeedback(countries) {
        countriesList.insertAdjacentHTML('beforeend', renderCountriesList(counrties));
     }
 }
-
-
-

@@ -23,12 +23,12 @@ ul {
   list-style: none;
 }
 
-.country-list__item{
+.country-list__item {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
 }
 
-.country-list__name{
+.country-list__name {
   margin-left: 20px;
 }

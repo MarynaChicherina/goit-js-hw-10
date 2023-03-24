@@ -32,3 +32,10 @@ ul {
 .country-list__name {
   margin-left: 20px;
 }
+
+.country-info {
+  padding-left: 40px;
+}
+.country-info__item {
+  font-weight: bold;
+}

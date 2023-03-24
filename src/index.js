@@ -24,8 +24,7 @@ function onInputChange(e) {
         checkServerReply(countries);
     }).catch(() => {
         Notiflix.Notify.failure("Oops, there is no country with that name");
-        countriesList.innerHTML = '';
-        countryInfo.innerHTML = '';
+
     });
 
 }
@@ -40,19 +39,19 @@ function renderCountriesList(countries) {
 
 function renderCountryInfo(countries) {
     return countries.map(({capital, population, languages}) => {
-    return `<span>Capital: ${capital}</span>
-        <span>Population: ${population}</span>
-        <span>Languages: ${Object.values(languages).join(', ')}</span>`
+    return `<p><span class='country-info__item'>Capital:</span> ${capital}</p>
+        <p><span class='country-info__item'>Population:</span> ${population}</p>
+        <p><span class='country-info__item'>Languages:</span> ${Object.values(languages).join(', ')}</p>`
     }).join('')
 }
 
 function checkServerReply(countries) {
     if(countries.length === 1) {
-        countriesList.insertAdjacentHTML('beforeend', renderCountriesList(counrties));
-        countryInfo.insertAdjacentHTML('beforeend', renderCountryInfo(counrties));
+        countriesList.insertAdjacentHTML('beforeend', renderCountriesList(countries));
+        countryInfo.insertAdjacentHTML('beforeend', renderCountryInfo(countries));
     } else if(countries.length > 10) {
         Notiflix.Notify.info("Too many matches found. Please enter a more specific name");
     } else if(countries.length >=2 && countries.length <=10) {
-       countriesList.insertAdjacentHTML('beforeend', renderCountriesList(counrties));
+       countriesList.insertAdjacentHTML('beforeend', renderCountriesList(countries));
     }
 }

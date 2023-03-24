@@ -24,7 +24,6 @@ function onInputChange(e) {
         checkServerReply(countries);
     }).catch(() => {
         Notiflix.Notify.failure("Oops, there is no country with that name");
-
     });
 
 }
